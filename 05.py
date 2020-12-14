@@ -3,8 +3,8 @@ def compute_seat_id(row, col):
 
 
 def count_seat_id(line):
-    min, max = (0, 127)
-    col_min, col_max = (0, 7)
+    min, max = 0, 127
+    col_min, col_max = 0, 7
     for c in line:
 
         row_size = (max-min+1)/2
@@ -34,5 +34,5 @@ def find_missing_id(ids):
 
 with open('inputs/05.txt') as f:
     ids = list(map(count_seat_id, f.readlines()))
-    print("Part 1: " + str(max(ids)))
-    print('Part 2: ' + str(find_missing_id(ids)))
+    print(f"Part 1: {max(ids)}")
+    print(f'Part 2: {find_missing_id(ids)}')

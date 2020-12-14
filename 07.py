@@ -54,7 +54,7 @@ def get_parent_colors(graph, start_color):
     while len(to_check) > 0:
         parent = to_check.pop()
         new_parents = [p for p in g.get_parent_colors(parent) if p not in found_parents]
-        to_check = to_check + list(new_parents)
+        to_check = to_check + new_parents
         found_parents.add(parent)
     return len(found_parents)-1
 
