@@ -15,8 +15,8 @@ from itertools import combinations
 
 # part 2
 
-
-numbers = list(map(int, filter(None, open("inputs/1.txt").read().split('\n'))))
-perm = (x*y*z for x, y, z in combinations(numbers, 3) if sum((x, y, z)) == 2020)
+with open("inputs/1.txt", 'r') as f:
+    numbers = map(int, f.readlines())
+perm = (x*y*z for x, y, z in combinations(numbers, 3) if x + y + z == 2020)
 
 print(list(perm))
