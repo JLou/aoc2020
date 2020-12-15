@@ -1,8 +1,5 @@
 instructions = []
 
-i = 0
-acc = 0
-visited_instructions = set()
 
 operations = {
     'nop': lambda x, i, acc: (i+1, acc),
@@ -21,9 +18,40 @@ def exec(instruction, i, acc):
     instruction_code, number = instruction
     return operations[instruction_code](number, i, acc)
 
+def part1():
+    i = 0
+    acc = 0
+    visited_instructions = set()
 
-while i not in visited_instructions:
-    visited_instructions.add(i)
-    i, acc = exec(instructions[i], i, acc)
+    while i not in visited_instructions:
+        visited_instructions.add(i)
+        i, acc = exec(instructions[i], i, acc)
 
-print(acc)
+    print(acc)
+
+
+def part2():
+
+    # yeah, just bruteforce it
+    for x in range(len(instructions)):
+        i = 0
+        acc = 0
+        visited_instructions = set()
+        copy_instructions = instructions[:]
+        curr_inst, curr_number = copy_instructions[x]
+        if curr_inst != "acc":
+            copy_instructions[x] = ("jmp" if curr_inst == 'nop' else 'nop', curr_number)
+        else:
+            continue
+
+        while i not in visited_instructions and i < len(copy_instructions):
+            visited_instructions.add(i)
+            i, acc = exec(copy_instructions[i], i, acc)
+        
+        if i == len(copy_instructions):
+            print(acc)
+            break
+
+part1()
+part2()
+
