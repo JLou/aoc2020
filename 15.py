@@ -18,7 +18,7 @@ def part1(starting_numbers:list):
     return play_game(starting_numbers, 2020)
 
 def part2(starting_numbers:list):
-    return play_game(starting_numbers, 30000000)
+    return play_game(starting_numbers, 30_000_000)
 
 tests1 = [
     ('1,3,2', 1),
